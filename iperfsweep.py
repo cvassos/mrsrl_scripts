@@ -12,10 +12,9 @@ for x in win_lens:
     for y in parallelargs:
         #Run Iperf & Extract out the speeds from the tests
         iperf = subprocess.Popen(('iperf','-c','-t20','-O10',''.join(('-w',x)),''.join(('-P',y))),stdout=subprocess.PIPE)
-        ipoutput = subprocess.check_output(('grep','([0-9]*\.[0-9])(?: Mbits/sec)'),stdin = ps.stdout)
-        greptext = ipoutput.communicate()[0]
-        data = [x,y,greptext]
+        iptext = iperf.communicate()
+        matches = re.findall("([0-9]*\.[0-9])(?: Mbits/sec)",iptext)
+        data = [x,y,gp]
         outputs.append(data)
 
-
-
+print(outputs)
