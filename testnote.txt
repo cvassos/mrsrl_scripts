@@ -1,0 +1,1 @@
+gradient echo sequence: 30degree pulse sequece, TR 34ms, 5 slices 7ms/RF pulse, 5 min duration
